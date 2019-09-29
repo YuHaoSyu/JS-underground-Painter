@@ -1,0 +1,310 @@
+@charset "UTF-8";
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  background: #E8E8E8;
+  overflow: hidden;
+}
+
+.bg-white {
+  background: #fff;
+}
+
+.fixed {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+  -webkit-transition: -webkit-transform .3s;
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s, -webkit-transform .3s;
+}
+
+.fixed-top {
+  top: 0;
+  bottom: calc(100% - 80px);
+}
+
+.fixed-top.active {
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+}
+
+.fixed-bottom {
+  left: 200px;
+  right: 200px;
+  bottom: 40px;
+}
+
+.fixed-bottom.active {
+  -webkit-transform: translateY(calc(100% + 40px));
+          transform: translateY(calc(100% + 40px));
+}
+
+.slide {
+  cursor: pointer;
+  position: absolute;
+  display: inline-block;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #fff;
+  z-index: -1;
+}
+
+.slide:after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  -webkit-transform: rotateZ(-45deg);
+          transform: rotateZ(-45deg);
+}
+
+.slide-up:after, .slide-down:after {
+  left: calc(50% - 6px);
+  border-width: 0;
+  border-style: solid;
+  -webkit-transition: -webkit-transform .3s;
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s, -webkit-transform .3s;
+}
+
+.slide-up.active:after, .slide-down.active:after {
+  -webkit-transform: rotateZ(135deg);
+          transform: rotateZ(135deg);
+}
+
+.slide-up:hover:after, .slide-down:hover:after {
+  border-color: #ff3366;
+}
+
+.slide-up {
+  top: calc(100% - 28px);
+  left: calc(50% - 28px);
+}
+
+.slide-up:after {
+  top: calc(60%);
+  border-top-width: 2px;
+  border-right-width: 2px;
+}
+
+.slide-down {
+  bottom: calc(100% - 28px);
+  left: calc(50% - 28px);
+}
+
+.slide-down:after {
+  bottom: calc(60%);
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+}
+
+svg {
+  display: block;
+  margin: 0 auto;
+}
+
+svg * {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+svg text {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: sans-serif, 微軟正黑體;
+}
+
+svg use, svg .rect, svg .circle {
+  cursor: pointer;
+}
+
+#toolbar {
+  width: 1080px;
+  height: 80px;
+}
+
+#toolbar text, #toolbar use {
+  -webkit-transition: fill .3s;
+  transition: fill .3s;
+}
+
+#toolbar text {
+  -webkit-transform: translateY(60%);
+          transform: translateY(60%);
+}
+
+#toolbar g {
+  cursor: pointer;
+}
+
+#toolbar g:hover text, #toolbar g:hover use {
+  fill: #ff3366;
+}
+
+#toolbar g.active {
+  fill: #00cc99;
+}
+
+#toolbar g:nth-child(1) > text {
+  -webkit-transform: translate(10%, 60%);
+          transform: translate(10%, 60%);
+}
+
+#toolbar g:nth-child(2) > text {
+  -webkit-transform: translate(30%, 60%);
+          transform: translate(30%, 60%);
+}
+
+#toolbar g:nth-child(3) > text {
+  -webkit-transform: translate(50%, 60%);
+          transform: translate(50%, 60%);
+}
+
+#toolbar g:nth-child(4) > text {
+  -webkit-transform: translate(70%, 60%);
+          transform: translate(70%, 60%);
+}
+
+#toolbar g:nth-child(5) > text {
+  -webkit-transform: translate(90%, 60%);
+          transform: translate(90%, 60%);
+}
+
+#painting {
+  width: 900px;
+  height: 90px;
+  border-radius: 100px;
+}
+
+#checked1, #checked2, #checked3 {
+  fill: transparent;
+  stroke-width: 3;
+  stroke-dashoffset: 45;
+  stroke-dasharray: 45;
+}
+
+#checked1.active, #checked2.active, #checked3.active {
+  -webkit-animation: stroke .5s forwards;
+          animation: stroke .5s forwards;
+}
+
+#checked1 {
+  stroke: red;
+}
+
+#checked2 {
+  stroke: orange;
+}
+
+#checked3 {
+  stroke: steelblue;
+}
+
+@-webkit-keyframes stroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes stroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.form polygon {
+  fill: transparent;
+  -webkit-transition: fill .3s;
+  transition: fill .3s;
+}
+
+.form:hover polygon {
+  fill: #00CC99;
+}
+
+.form:hover polygon:hover {
+  fill: #01936F;
+}
+
+#paletteBtn.active {
+  fill: url(#Gradient1);
+}
+
+#palette {
+  position: absolute;
+  right: 0;
+  top: 80px;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+}
+
+#palette.active {
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+}
+
+.rect {
+  y: 35%;
+  width: 26px;
+  height: 26px;
+  stroke-width: 4px;
+  stroke: #000;
+  fill: #fff;
+}
+
+.circle {
+  cy: 50%;
+  r: 13px;
+  stroke-width: 4px;
+  stroke: #000;
+  fill: #fff;
+}
+
+#increase {
+  -webkit-transform: translate(35.5%, 10%);
+          transform: translate(35.5%, 10%);
+}
+
+#decrease {
+  -webkit-transform: translate(35.5%, 91%);
+          transform: translate(35.5%, 91%);
+}
+
+.form {
+  -webkit-transform: translateX(10%);
+          transform: translateX(10%);
+}
+
+.form rect {
+  x: 31%;
+  y: 21px;
+  rx: 24px;
+  ry: 24px;
+  width: 85px;
+  height: 48px;
+  fill: #e8e8e8;
+}
+
+.text-hide {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,58 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="./css/style.css")
+    title Hex School Underground Painter
+    meta(name="description" content="Using HTML5 canvas API to make a easy painter. we can draw a circle, rect or what you like. The painter also support to save and load methods.")
+  body
+    h1.text-hide 簡易小畫家 Canvas API使用|六角學院JS地下城
+    .bg-white.fixed.fixed-top
+      svg#toolbar
+        g#save
+          use.left-5.icon(width="36" x="5%" xlink:href="./img/symbol-defs.svg#icon-save")
+          text SAVE
+        g#load
+          use.left-25.icon(width="36" x="25%" xlink:href="./img/symbol-defs.svg#icon-drive_folder_upload")
+          text LOAD
+        g#clean
+          use.left-45.icon(width="36" x="45%" xlink:href="./img/symbol-defs.svg#icon-fullscreen")
+          text CLEAR ALL
+        g#undo
+          use.left-65.icon(width="36" x="65%" xlink:href="./img/symbol-defs.svg#icon-undo")
+          text UNDO
+        g#redo
+          use.left-85.icon(width="36" x="85%" xlink:href="./img/symbol-defs.svg#icon-redo")
+          text REDO
+      span.slide.slide-up
+    canvas#mainCanvas
+    .fixed.fixed-bottom
+      span.slide.slide-down
+      svg#painting.bg-white
+        defs
+          radialgradient#Gradient1
+            stop(offset="0%" stop-color="blue")
+            stop(offset="100%" stop-color="orange")
+        g.draw
+          use#brush(x="2%" width="42" xlink:href="./img/symbol-defs.svg#icon-brush" stroke="black")
+          use#eraser(x="7.5%" width="42" xlink:href="./img/symbol-defs.svg#icon-eraser" )
+          rect#rect.rect(x="14.5%")
+          circle#circle.circle(cx="21.5%")
+          use#straw(x="24%" width="42" xlink:href="./img/symbol-defs.svg#icon-colorize" )
+          use#paletteBtn(x="29.5%" width="42" xlink:href="./img/symbol-defs.svg#icon-palette" )
+        g.form
+          text(x="24%" y="55%") SIZE:
+          rect
+          polygon#increase(points="0,0 -10,10 10,10")
+          text#size(x="35%" y="55%")
+          polygon#decrease(points="0,0 -10,-10 10,-10")
+          text(x="41%" y="55%") px
+        g.color-block
+          text(x="55%" y="55%") COLOR:
+          each color,index in  ['white','black','#9BFFCD','#00CC99','#01936F']
+            circle(cx=(68+index*7)+'%' cy="50%" r="24" stroke=index?color:'black' fill=index?color:'white')
+        each check,index in[{x:'75%',y:'48%'},{x:'68%',y:'62%'},{x:'4.5%',y:'24%'}]
+          path.active(id='checked'+(index+1), d="M-10 5 h10 v-20" style=`transform: translate(${check.x},${check.y}) rotateZ(45deg)`)
+    canvas#palette
+  script(type="module" src="./js/main.js")

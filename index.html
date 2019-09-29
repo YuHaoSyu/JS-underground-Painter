@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Hex School Underground Painter</title>
+    <meta name="description" content="Using HTML5 canvas API to make a easy painter. we can draw a circle, rect or what you like. The painter also support to save and load methods.">
+  </head>
+  <body>
+    <h1 class="text-hide">簡易小畫家 Canvas API使用|六角學院JS地下城</h1>
+    <div class="bg-white fixed fixed-top">
+      <svg id="toolbar">
+        <g id="save">
+          <use class="left-5 icon" width="36" x="5%" xlink:href="./img/symbol-defs.svg#icon-save"></use>
+          <text>SAVE</text>
+        </g>
+        <g id="load">
+          <use class="left-25 icon" width="36" x="25%" xlink:href="./img/symbol-defs.svg#icon-drive_folder_upload"></use>
+          <text>LOAD</text>
+        </g>
+        <g id="clean">
+          <use class="left-45 icon" width="36" x="45%" xlink:href="./img/symbol-defs.svg#icon-fullscreen"></use>
+          <text>CLEAR ALL</text>
+        </g>
+        <g id="undo">
+          <use class="left-65 icon" width="36" x="65%" xlink:href="./img/symbol-defs.svg#icon-undo"></use>
+          <text>UNDO</text>
+        </g>
+        <g id="redo">
+          <use class="left-85 icon" width="36" x="85%" xlink:href="./img/symbol-defs.svg#icon-redo"></use>
+          <text>REDO</text>
+        </g>
+      </svg><span class="slide slide-up"></span>
+    </div>
+    <canvas id="mainCanvas"></canvas>
+    <div class="fixed fixed-bottom"><span class="slide slide-down"></span>
+      <svg class="bg-white" id="painting">
+        <defs>
+          <radialgradient id="Gradient1">
+            <stop offset="0%" stop-color="blue"></stop>
+            <stop offset="100%" stop-color="orange"></stop>
+          </radialgradient>
+        </defs>
+        <g class="draw">
+          <use id="brush" x="2%" width="42" xlink:href="./img/symbol-defs.svg#icon-brush" stroke="black"></use>
+          <use id="eraser" x="7.5%" width="42" xlink:href="./img/symbol-defs.svg#icon-eraser"></use>
+          <rect class="rect" id="rect" x="14.5%"></rect>
+          <circle class="circle" id="circle" cx="21.5%"></circle>
+          <use id="straw" x="24%" width="42" xlink:href="./img/symbol-defs.svg#icon-colorize"></use>
+          <use id="paletteBtn" x="29.5%" width="42" xlink:href="./img/symbol-defs.svg#icon-palette"></use>
+        </g>
+        <g class="form">
+          <text x="24%" y="55%">SIZE:</text>
+          <rect></rect>
+          <polygon id="increase" points="0,0 -10,10 10,10"></polygon>
+          <text id="size" x="35%" y="55%"></text>
+          <polygon id="decrease" points="0,0 -10,-10 10,-10"></polygon>
+          <text x="41%" y="55%">px</text>
+        </g>
+        <g class="color-block">
+          <text x="55%" y="55%">COLOR:</text>
+          <circle cx="68%" cy="50%" r="24" stroke="black" fill="white"></circle>
+          <circle cx="75%" cy="50%" r="24" stroke="black" fill="black"></circle>
+          <circle cx="82%" cy="50%" r="24" stroke="#9BFFCD" fill="#9BFFCD"></circle>
+          <circle cx="89%" cy="50%" r="24" stroke="#00CC99" fill="#00CC99"></circle>
+          <circle cx="96%" cy="50%" r="24" stroke="#01936F" fill="#01936F"></circle>
+        </g>
+        <path class="active" id="checked1" d="M-10 5 h10 v-20" style="transform: translate(75%,48%) rotateZ(45deg)"></path>
+        <path class="active" id="checked2" d="M-10 5 h10 v-20" style="transform: translate(68%,62%) rotateZ(45deg)"></path>
+        <path class="active" id="checked3" d="M-10 5 h10 v-20" style="transform: translate(4.5%,24%) rotateZ(45deg)"></path>
+      </svg>
+    </div>
+    <canvas id="palette"></canvas>
+  </body>
+  <script type="module" src="./js/main.js"></script>
+</html>
